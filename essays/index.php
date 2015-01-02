@@ -24,7 +24,7 @@
 $dir = __DIR__.'/essay-products';
 $files = scandir($dir);
 while (list(, $docpath) = each($files)) {
-    echo "<li class=\"list-group-item\"><a href=\"http://localhost:80/archeros/productivity/PDFLint/essay-products/".$docpath."\">".$docpath."</a></li>\n";
+    echo "<li class=\"list-group-item\"><a href=\"http://localhost/Producktiviti/PDFLint/essays/essay-products/".$docpath."\">".$docpath."</a></li>\n";
 }
 ?>
 </ul>

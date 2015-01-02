@@ -8,8 +8,8 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/themes/smoothness/jquery-ui.css" />
 <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/jquery-ui.min.js"></script>
-<script src="http://tinymce.cachefly.net/4.1/tinymce.min.js"></script>
-<script src="http://tinymce.cachefly.net/4.1/tinymce.min.js"></script>
+<script src="tinymce/js/tinymce/tinymce.min.js"></script>
+<script src="tinymce/js/tinymce/jquery.tinymce.min.js"></script>
 <link rel="stylesheet" type="text/css" href="essay.new.css">
 <script src="bootstrap.js"></script>
 <link href="bootstrap.css" rel="stylesheet">
@@ -42,12 +42,16 @@ content_css : "essaycontent.css",
 plugins: [
          "advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker",
          "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
-         "save table contextmenu directionality emoticons template paste textcolor"
+         "save table contextmenu directionality emoticons template paste textcolor "
    ],
 toolbar1 : "newdocument bold italic underline strikethrough alignleft aligncenter alignright alignjustify styleselect" ,
 toolbar2 : "formatselect fontselect fontsizeselect cut copy paste bullist numlist outdent indent blockquote undo redo removeformat subscript superscript save",
 toolbar3 : "insertdatetime forecolor backcolor",
-
+paste_auto_cleanup_on_paste : true,
+      	paste_postprocess : function(pl, o) {
+            // remove extra line breaks
+            o.node.innerHTML = o.node.innerHTML.replace(/<p.*>\s*(<br>|&nbsp;)\s*<\/p>/ig, "");
+        }
 });
 
 var introToPDFLint =  new Tour({
