@@ -8,15 +8,16 @@
 
 
 CKEDITOR.editorConfig = function( config ) {
-	
-// Define changes to default configuration here. For example:
-	
-// config.language = 'fr';
-	
-// config.uiColor = '#AADC6E';
-	
+config.extraPlugins = 'a11yhelp,performx,confighelper,floating-tools,fontawesome,ckeditor-gwf-plugin,docprops,wysiwygarea,devtools,widget,wordcount,autocorrect,mathjax,lineutils';
 config.scayt_autoStartup = true;
-
-config.extraPlugins = 'docprops,wysiwygarea';
+config.filebrowserBrowseUrl =  '/browser/browse.php';
+config.filebrowserImageBrowseUrl = '/browser/browse.php?type=Images';
+config.filebrowserUploadUrl = '/uploader/upload.php';
+config.filebrowserImageUploadUrl= '/uploader/upload.php?type=Images';
+config.filebrowserWindowWidth= '640';
+config.filebrowserWindowHeight= '480';
+config.font_names = "Segoe UI;Times;Verdana;Comic Sans MS;Arial;Tahoma;Trebuchet MS;Impact;Helvetica;Segoe Print;GoogleWebFonts;Segoe UI Light;Segoe UI Bold;Cambria;Cambria Math;sans-serif;serif;Papyrus;Antigua";
 config.fullPage = true;
+config.toolbarCanCollapse = true;
+
 };

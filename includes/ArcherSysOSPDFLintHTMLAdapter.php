@@ -12,7 +12,7 @@
               return file_get_contents($this->getFileBucket().$filename.".".$this->getFormat());
         }
      function getFileBucket(){
-        return $_SERVER["DOCUMENT_ROOT"]."/Producktiviti/PDFLint/docs/".$this->getFormat();
+        return $_SERVER["DOCUMENT_ROOT"]."/Producktiviti/PDFLint/".$this->getFormat();
      }
 }
 ?>
