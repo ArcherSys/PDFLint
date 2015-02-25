@@ -69,23 +69,27 @@ if(isset($_COOKIE['ID_my_site']))
 <script src="https://togetherjs.com/togetherjs-min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/dropbox.js/0.10.2/dropbox.min.js">
 </script>
-<script>
-  var TogetherJSConfig_toolName="CafeSync";
-  window.onload =function(){
-    TogetherJS(this);
-  }
-</script>
 <script type="text/javascript">CKEDITOR.dtd.$removeEmpty['span'] = false;</script>
 <script src="/settings/components/webcomponentsjs/webcomponents.js"></script>
 <link rel="import" href="/settings/components/polymer.polymer.html">
-<script>$(function(){
+<script>
+
+$(function(){
+  var TogetherJSConfig_toolName="CafeSync";
+  var TogetherJSConfig_findRoom = {prefix: "cafe",max:20};
+  var TogetherJSConfig_inviteFromRoom = true;
+  if(window.navigator.mozApps){
+TogetherJS(this);  }else{
+    $("#cfsc").click(TogetherJS);
+  }
 $("#dbsave").click(function(){
     client.authenticate(function(error, client) {
 
         client.writeFile($(".archersys-pdflint-filename").val(), $(".ckeditor").text(), function() {
             alert("saved!");
         });
-
+ 
+ 
 
     });
 });
@@ -94,7 +98,7 @@ $("#dbsave").click(function(){
 </head>
 <body>
 <button id="dbsave">Save To Dropbox</button>
-
+<button id="cfsc">CafeSync</button>
 <form action="saveToHTMLFile.php" method="post">
 <div class="archersys-pdflint-panel">
  <input type="text" class="archersys-pdflint-filename" placeholder="filename" name="doc-filename"/>
