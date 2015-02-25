@@ -66,9 +66,16 @@ if(isset($_COOKIE['ID_my_site']))
 <script src="https://togetherjs.com/togetherjs-min.js"></script>
 <script src="http://code.jquery.com/jquery-2.0.3.min.js" type="text/javascript"></script>
 <link  rel="stylesheet"  href="archersys-ui.css"/>
+<script src="https://togetherjs.com/togetherjs-min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/dropbox.js/0.10.2/dropbox.min.js">
 </script>
-<script>CKEDITOR.dtd.$removeEmpty['span'] = false;</script>
+<script>
+  var TogetherJSConfig_toolName="CafeSync";
+  window.onload =function(){
+    TogetherJS(this);
+  }
+</script>
+<script type="text/javascript">CKEDITOR.dtd.$removeEmpty['span'] = false;</script>
 <script src="/settings/components/webcomponentsjs/webcomponents.js"></script>
 <link rel="import" href="/settings/components/polymer.polymer.html">
 <script>$(function(){
