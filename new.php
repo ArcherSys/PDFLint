@@ -82,11 +82,28 @@ $(function(){
 TogetherJS(this);  }else{
     $("#cfsc").click(TogetherJS);
   }
+      var client = new Dropbox.Client({ key: "brwekpcno93vtpz" });
+
+  $("#dbload").click(function(){
+        client.authenticate(function(error, client) {
+
+    client.readFile("/Documents/" + prompt("File in Docs Folder:"), function(error, data) {
+      if (error) {
+alert(error);  } else{
+    CKEDITOR.instances.doc.setData(data);
+  }
+  });
+        });
+  });
 $("#dbsave").click(function(){
     client.authenticate(function(error, client) {
 
-        client.writeFile($(".archersys-pdflint-filename").val(), $(".ckeditor").text(), function() {
+        client.writeFile("/Documents/" + $(".archersys-pdflint-filename").val(), CKEDITOR.instances.doc.getData(), function(error, data) {
+        if (error) {
+    alert(error);  // Something went wrong.
+  }else{
             alert("saved!");
+            }
         });
  
  
@@ -98,12 +115,14 @@ $("#dbsave").click(function(){
 </head>
 <body>
 <button id="dbsave">Save To Dropbox</button>
+<button id="dbload">Load From Dropbox</button>
+
 <button id="cfsc">CafeSync</button>
-<form action="saveToHTMLFile.php" method="post">
+<form action="saveToHTMLFile.php" method="POST">
 <div class="archersys-pdflint-panel">
- <input type="text" class="archersys-pdflint-filename" placeholder="filename" name="doc-filename"/>
+ <input type="text" class="archersys-pdflint-filename" placeholder="filename" name="filename"/>
 </div>
- <textarea class="ckeditor archersys-pdflint-editor" id="doc"></textarea>
+ <textarea name="document" class="ckeditor archersys-pdflint-editor" id="doc"></textarea>
 </form>
 </body>
 </html>

@@ -3,15 +3,32 @@
 <head>
 <title>New Essay, New Work, New You - PDFLint </title>
 <meta content='width=device-width, initial-scale=1.0, user-scalable=no' name='viewport'>
-<script src="jquery.min.js"></script>
-    
-<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css"/>
-<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap-theme.min.css"/>
+<?php
+ require_once $_SERVER["DOCUMENT_ROOT"]."/includes/ViewManager.php";
+ require_once $_SERVER["DOCUMENT_ROOT"].'/includes/LogicManager.php';
+  require_once $_SERVER["DOCUMENT_ROOT"].'/includes/StyleManager.php';
+
+ use ArcherSys\Viewer\LogicManager;
+  use ArcherSys\Viewer\StyleManager;
+ use ArcherSys\Viewer\BootStrapManager;
+ LogicManager::addJQuery("jquery.min.js");
+ StyleManager::addBootStrap();
+ ?>
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 <script src="bootstrap/js/bootstrap.min.js"></script>
 <script src="bootstrap.js"></script>
 <link href="bootstrap.css" rel="stylesheet">
-<link href="bootstrap-tour.min.css" rel="stylesheet">
-<link href="bootstrap-tour.min.css" rel="stylesheet">
+<?php
+  StyleManager::addBootStrapTour();
+
+  StyleManager::addBootStrap();
+?>
+
 <script src="bootstrap-tour.min.js"></script>
 <script src="bootstrap-tour.js"></script>
 <link rel="stylesheet" type="text/css" href="stylesheet.css">
@@ -25,24 +42,28 @@
 <body>
 
 
-<div class="container-fluid">
+<?php
+    BootStrapManager::defineFluidContainer("start");
+    ?>
 <nav class="nav navbar-default navbar-fixed-top" role="navigation">
 <ul class="nav nav-tabs">
-<li class="active"><a href="essays/">Essays</a></li>
-<li ><a href="essays/index.php">View My Essays</a></li>
-<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Create New<span class="carat"></span></a><ul class="dropdown-menu">
-    <li><a href="new.php"><Personal Narrative</a>
-    </li>
-  <li><a id="newessay" href="essays/essay.new.php">Essay</a></li>
-  <li><a href="#">Menu 3</a></li> 
 
-</ul>
-</li>
+  <li class="dropdown">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Create New...
+    <span class="caret"></span></a>
+    <ul class="dropdown-menu">
+      <li><a href="essays/essay.new.php">Essay</a></li>
+      <li><a href="new.php">Document</a></li>
+      <li><a href="#">Submenu 1-3</a></li>
+    </ul>
+  </li>
 <li><a id="opengmail" href="https://gmail.com">Gmail</a></li>
 <li><a id="goto-edmodo" href="#edmodo">Edmodo</a></li>
+<li class="active"><a href="essays/">Essays</a></li>
+<li ><a href="essays/index.php">View My Essays</a></li>
 </ul>
 </nav>
-<div class="jumbotron">
+
  <div class="container-fluid">
  
    

@@ -1,6 +1,4 @@
 <?php
-  require_once "includes/ArcherSysOSPDFLintHTMLAdapter.php";
-  use ArcherSys\Apps\PDFLint\ArcherSysOSPDFLintHTMLAdapter;
-  $filesaver = new ArcherSysOSPDFLintHTMLAdapter();
-   $filesaver->saveToFile($_POST["document"],$_POST["doc-filename"]);
+  
+file_put_contents("/bucket/".$_POST["filename"].".html",$_POST["document"] );
   ?>
