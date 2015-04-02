@@ -65,13 +65,28 @@ if(isset($_COOKIE['ID_my_site']))
 <script src="http://localhost/Producktiviti/PDFLint/ckeditor/ckeditor.js"></script>
 <script src="https://togetherjs.com/togetherjs-min.js"></script>
 <script src="http://code.jquery.com/jquery-2.0.3.min.js" type="text/javascript"></script>
-<link  rel="stylesheet"  href="archersys-ui.css"/>
 <script src="https://togetherjs.com/togetherjs-min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/dropbox.js/0.10.2/dropbox.min.js">
 </script>
 <script type="text/javascript">CKEDITOR.dtd.$removeEmpty['span'] = false;</script>
-<script src="/settings/components/webcomponentsjs/webcomponents.js"></script>
-<link rel="import" href="/settings/components/polymer.polymer.html">
+<meta content='width=device-width, initial-scale=1.0, user-scalable=no' name='viewport'>
+
+<script src="/core/js/jquery.js"></script>
+<link rel="stylesheet" href="bootstrap-tour.min.css">
+
+<!-- jQuery library -->
+
+<!-- Latest compiled JavaScript -->
+<script src="bootstrap/js/bootstrap.min.js"></script>
+<script src="bootstrap/js/bootstrap.js"></script>
+<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+<link href="bootstrap/css/bootstrap.css" rel="stylesheet">
+
+<script src="bootstrap-tour.min.js"></script>
+<script src="bootstrap-tour.js"></script>
+<link rel="stylesheet" type="text/css" href="stylesheet.css">
+<link rel="stylesheet" type="text/css" href="landing-page.css">
 <script>
 
 $(function(){
@@ -109,22 +124,30 @@ $("#dbsave").click(function(){
  
 
     });
-});
+}); 
 });
 </script>
 </head>
 <body>
-<button id="dbsave">Save To Dropbox</button>
-<button id="dbload">Load From Dropbox</button>
+<div class="container-fluid">
 
-<button id="cfsc">CafeSync</button>
+<nav class="nav navbar-default navbar-fixed-top" role="navigation">
+<ul class="nav nav-tabs">
+<li><a href="#" id="dbsave">Save To Dropbox</a></li>
+<li><a hre="#" id="dbload"><i class="fa-fa-dropbox"></i>Load From Dropbox</a></li>
+
+<li><a href="#" id="cfsc">CafeSync</a></li>
+</ul>
+</nav>
 <form action="saveToHTMLFile.php" method="POST">
-<div class="archersys-pdflint-panel">
- <input type="text" class="archersys-pdflint-filename" placeholder="filename" name="filename"/>
+<div class="archersys-pdflint-panel ">
+ <input type="text" class="archersys-pdflint-filename form-control" placeholder="filename" name="filename"/>
 </div>
  <textarea name="document" class="ckeditor archersys-pdflint-editor" id="doc"></textarea>
 </form>
+</div>
 </body>
+
 </html>
 
 <?php

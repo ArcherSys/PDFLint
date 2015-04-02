@@ -3,37 +3,23 @@
 <head>
 <title>New Essay, New Work, New You - PDFLint </title>
 <meta content='width=device-width, initial-scale=1.0, user-scalable=no' name='viewport'>
-<?php
- require_once $_SERVER["DOCUMENT_ROOT"]."/includes/ViewManager.php";
- require_once $_SERVER["DOCUMENT_ROOT"].'/includes/LogicManager.php';
-  require_once $_SERVER["DOCUMENT_ROOT"].'/includes/StyleManager.php';
 
- use ArcherSys\Viewer\LogicManager;
-  use ArcherSys\Viewer\StyleManager;
- use ArcherSys\Viewer\BootStrapManager;
- LogicManager::addJQuery("jquery.min.js");
- StyleManager::addBootStrap();
- ?>
+<script src="/core/js/jquery.js"></script>
+<link rel="stylesheet" href="bootstrap-tour.min.css">
 
 <!-- jQuery library -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
 <!-- Latest compiled JavaScript -->
-<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 <script src="bootstrap/js/bootstrap.min.js"></script>
-<script src="bootstrap.js"></script>
-<link href="bootstrap.css" rel="stylesheet">
-<?php
-  StyleManager::addBootStrapTour();
+<script src="bootstrap/js/bootstrap.js"></script>
+<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-  StyleManager::addBootStrap();
-?>
+<link href="bootstrap/css/bootstrap.css" rel="stylesheet">
 
 <script src="bootstrap-tour.min.js"></script>
 <script src="bootstrap-tour.js"></script>
 <link rel="stylesheet" type="text/css" href="stylesheet.css">
 <link rel="stylesheet" type="text/css" href="landing-page.css">
-    <script src="https://www.dropbox.com/static/api/dropbox-datastores-1.1-latest.js" type="text/javascript"></script>
     <script src="PDFLJS.js">
 
           </script>
@@ -42,9 +28,8 @@
 <body>
 
 
-<?php
-    BootStrapManager::defineFluidContainer("start");
-    ?>
+
+<div class="container-fluid">
 <nav class="nav navbar-default navbar-fixed-top" role="navigation">
 <ul class="nav nav-tabs">
 
@@ -64,7 +49,7 @@
 </ul>
 </nav>
 
- <div class="container-fluid">
+ <div class="jumbotron">
  
    
       <h1 id="pdfl-tour">PDFLint Word Processing</h1>
@@ -93,5 +78,4 @@
 </form>
 
 </body>
-</html>
 </html>
