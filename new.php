@@ -130,15 +130,12 @@ $("#dbsave").click(function(){
 </head>
 <body>
 <div class="container-fluid">
+ 
+<button id="dbsave">Save To Dropbox</a></li>
+<button id="dbload"><i class="fa-fa-dropbox"></i>Load From Dropbox</a></li>
 
-<nav class="nav navbar-default navbar-fixed-top" role="navigation">
-<ul class="nav nav-tabs">
-<li><a href="#" id="dbsave">Save To Dropbox</a></li>
-<li><a hre="#" id="dbload"><i class="fa-fa-dropbox"></i>Load From Dropbox</a></li>
+<button id="cfsc">CafeSync</a></li>
 
-<li><a href="#" id="cfsc">CafeSync</a></li>
-</ul>
-</nav>
 <form action="saveToHTMLFile.php" method="POST">
 <div class="archersys-pdflint-panel ">
  <input type="text" class="archersys-pdflint-filename form-control" placeholder="filename" name="filename"/>

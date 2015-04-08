@@ -8,7 +8,7 @@
 
 
 CKEDITOR.editorConfig = function( config ) {
-config.extraPlugins = 'a11yhelp,performx,confighelper,floating-tools,fontawesome,ckeditor-gwf-plugin,docprops,wysiwygarea,devtools,widget,wordcount,autocorrect,mathjax,lineutils,tweetabletext,coops-dmp,coops-connector,change,coops';
+config.extraPlugins = 'a11yhelp,performx,confighelper,keyconf,floating-tools,fontawesome,ckeditor-gwf-plugin,docprops,wysiwygarea,devtools,widget,wordcount,autocorrect,mathjax,lineutils,tweetabletext,uicolor,coops-dmp,coops-connector,change,coops';
 config.scayt_autoStartup = true;
 config.filebrowserBrowseUrl =  '/browser/browse.php';
 config.filebrowserImageBrowseUrl = '/browser/browse.php?type=Images';
@@ -19,5 +19,8 @@ config.filebrowserWindowHeight= '480';
 config.font_names = "Segoe UI;Times;Verdana;Comic Sans MS;Arial;Tahoma;Trebuchet MS;Impact;Helvetica;Segoe Print;GoogleWebFonts;Segoe UI Light;Segoe UI Bold;Cambria;Cambria Math;sans-serif;serif;Papyrus;Antigua";
 config.fullPage = true;
 config.toolbarCanCollapse = true;
+config.allowedContent = true;
+config.enterMode = CKEDITOR.ENTER_DIV;
+config.shiftEnterMode = CKEDITOR.ENTER_P;
 
 };
