@@ -8,10 +8,9 @@
 <link rel="stylesheet" href="bootstrap-tour.min.css">
 
 <!-- jQuery library -->
-
+<script src="jquery.min.js"></script>
 <!-- Latest compiled JavaScript -->
 <script src="bootstrap/js/bootstrap.min.js"></script>
-<script src="bootstrap/js/bootstrap.js"></script>
 <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
 <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
@@ -37,15 +36,20 @@
     <a class="dropdown-toggle" data-toggle="dropdown" href="#">Create New...
     <span class="caret"></span></a>
     <ul class="dropdown-menu">
-      <li><a href="essays/essay.new.php">Essay</a></li>
+      <li><a href="essays/essay.new.php" id="newessay">Essay</a></li>
       <li><a href="new.php">Document</a></li>
-      <li><a href="#">Submenu 1-3</a></li>
+      <li><a href="photo-essay/">Photo Essay</a></li>
     </ul>
   </li>
 <li><a id="opengmail" href="https://gmail.com">Gmail</a></li>
 <li><a id="goto-edmodo" href="#edmodo">Edmodo</a></li>
 <li class="active"><a href="essays/">Essays</a></li>
 <li ><a href="essays/index.php">View My Essays</a></li>
+<li><a href="http://localhost:80"><?php
+
+
+?>
+</a></li>
 </ul>
 </nav>
 
@@ -58,6 +62,8 @@
 <a class="btn btn-primary btn-lg" href="#" role="button" id="intro">Get Started!</a></p>
    </div>
  </div>
+</div>
+<div class="row">
 </div>
     <div class="row">
 <div class="col-xs-6 col-md-3">

@@ -1,10 +1,11 @@
 <!DOCTYPE HTML>
-
 <html>
 <head>
 <title>New Essay</title>
 <meta content='width=device-width, initial-scale=1.0, user-scalable=no' name='viewport'>
+
 <script src="jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/dropbox.js/0.10.2/dropbox.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/themes/smoothness/jquery-ui.css" />
 <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/jquery-ui.min.js"></script>
@@ -75,17 +76,40 @@ var introToPDFLint =  new Tour({
            element: "#togetherjs-dock",
            title: "Collaboration",
            content: "Click on one of the buttons here to start collaboration",
-            }
+     }
             
-            ]});
+       ]});
+       $(function(){
          introToPDFLint.init();
-         introToPDFLint.start();
+	 introToPDFLint.start();
+	 $("#save").click(function(){
+		 $("#docform").submit();
+	 });
+		 $("#dropbox-saver").click(function(){
+                      var client = new Dropbox.Client({ key: "brwekpcno93vtpz" });
+    client.authenticate(function(error, client) {
+
+        client.writeFile("/Documents/" + $("input[name=title]").val()+".html", tinymce.activeEditor.getContent(), function(error, data) {
+        if (error) {
+    alert(error);  // Something went wrong.
+  }else{
+            alert("saved!");
+            }
+       
+    });
+ 
+
+   
+	 });
+		 });
+       });
 </script>
 
 
 </head>
 <body>
-<div class="container-fluid">
+<div class="container-fluid">1>
+<h1 class="title-header">New Document<//h
 <nav class="nav navbar-default navbar-fixed-top " role="navigation">
 <ul class="nav nav-tabs" role="tablist">
 <li class="active"><a href="#new">New</a></li>
@@ -99,7 +123,7 @@ var introToPDFLint =  new Tour({
   Start TogetherJS
 </button>
 <div class="input-group">
-<form method ="POST" action="createproc.php">
+<form method ="POST" action="createproc.php" id="docform">
 
 
 <input type="text" name="title" id="title" class="form-control" placeholder="Title">
@@ -110,10 +134,11 @@ var introToPDFLint =  new Tour({
 
 
 <textarea name="body"></textarea>
-
-<input type="submit" value="Submit">
+<div class="btn-toolbar" role="toolbar" aria-label="Saver">
+<div class="btn-group btn-group-lg" role="group" aria-label="Saver">
+<button id="save">Save to ArcherVM</button><button id="dropbox-saver">Save To Dropbox</button></div></div>
 </form>
 </div>
 </div>
 </body>
-</html></html>
+</html>

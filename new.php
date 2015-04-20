@@ -22,13 +22,13 @@
 
 
  
-if(isset($_COOKIE['ID_my_site']))
+if(isset($_COOKIE['ID_ARCHERVMCASHEW']))
 
  {
 
- 	$username = $_COOKIE['ID_my_site'];
+ 	$username = $_COOKIE['ID_ARCHERVMCASHEW'];
 
- 	$pass = $_COOKIE['Key_my_site'];
+ 	$pass = $_COOKIE['Key_ARCHERVMCASHEW'];
 
  	 	$check = mysql_query("SELECT * FROM users WHERE username = '$username'")or die(mysql_error());
 
@@ -66,8 +66,8 @@ if(isset($_COOKIE['ID_my_site']))
 <script src="https://togetherjs.com/togetherjs-min.js"></script>
 <script src="http://code.jquery.com/jquery-2.0.3.min.js" type="text/javascript"></script>
 <script src="https://togetherjs.com/togetherjs-min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/dropbox.js/0.10.2/dropbox.min.js">
-</script>
+				<script src="https://cdnjs.cloudflare.com/ajax/libs/dropbox.js/0.10.2/dropbox.min.js">
+
 <script type="text/javascript">CKEDITOR.dtd.$removeEmpty['span'] = false;</script>
 <meta content='width=device-width, initial-scale=1.0, user-scalable=no' name='viewport'>
 
@@ -83,6 +83,8 @@ if(isset($_COOKIE['ID_my_site']))
 
 <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
 
+</script>
+<link rel="stylesheet" type="text/css" href="/core/font-awesome/css/font-awesome.min.css"/>
 <script src="bootstrap-tour.min.js"></script>
 <script src="bootstrap-tour.js"></script>
 <link rel="stylesheet" type="text/css" href="stylesheet.css">
@@ -110,18 +112,18 @@ alert(error);  } else{
   });
         });
   });
-$("#dbsave").click(function(){
+$("#").click(function(){
     client.authenticate(function(error, client) {
 
-        client.writeFile("/Documents/" + $(".archersys-pdflint-filename").val(), CKEDITOR.instances.doc.getData(), function(error, data) {
+        client.writeFile("/Documents/" + $(".archersys-pdflint-filename").val(),  function(error, data) {
         if (error) {
-    alert(error);  // Something went wrong.
+     Notidar.pushNotification(error);  // Something went wrong.
   }else{
-            alert("saved!");
+            Notidar.pushNotification("Work Update:","saved!");
             }
         });
  
- 
+    });
 
     });
 }); 
@@ -129,18 +131,28 @@ $("#dbsave").click(function(){
 </script>
 </head>
 <body>
-<div class="container-fluid">
- 
-<button id="dbsave">Save To Dropbox</a></li>
-<button id="dbload"><i class="fa-fa-dropbox"></i>Load From Dropbox</a></li>
+<div class="container-fluid"><h3>New Document</h3><nav class="nav navbar-default navbar-fixed-top " role="navigation">
+<ul class="nav nav-tabs" role="tablist">
+<li class="active"><a href="#new">New</a></li>
+<li><a href="#edit">Edit</a></li>
+</ul>
+</nav>
+ <div class="btn-toolbar" role="toolbar" aria-label="Saver">
+<button id="dbsave"><i class="fa fa-dropbox"></i>Save To Dropbox</a></li>
+<button id="dbload"><i class="fa fa-large fa-dropbox"></i>Load From Dropbox</button>
 
-<button id="cfsc">CafeSync</a></li>
+<button id="cfsc"><i class="fa fa-share alt"></i>CafeSync</button>
+</div>
 
 <form action="saveToHTMLFile.php" method="POST">
+<div class="form-group">
 <div class="archersys-pdflint-panel ">
- <input type="text" class="archersys-pdflint-filename form-control" placeholder="filename" name="filename"/>
-</div>
+<div class="form-group"><div class="input-group input-group-sm"><span class="input-group-addon" id="sizing-addon3"><i class="fa fa-save"></i></span>
+
+ <input type="text" class="archersys-pdflint-filename form-control" placeholder="filename" name="filename" ariadescribedby="sizing-addon3" />
+</div></div>
  <textarea name="document" class="ckeditor archersys-pdflint-editor" id="doc"></textarea>
+</div>
 </form>
 </div>
 </body>
