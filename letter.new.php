@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>New Essay</title>
+<title>New Letter</title>
 <meta content='width=device-width, initial-scale=1.0, user-scalable=no' name='viewport'>
 
 <script src="jquery.min.js"></script>
@@ -11,9 +11,9 @@
 <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/jquery-ui.min.js"></script>
 <script src="tinymce/js/tinymce/tinymce.min.js"></script>
 <script src="tinymce/js/tinymce/jquery.tinymce.min.js"></script>
-<link rel="stylesheet" type="text/css" href="essay.new.css">
-<script src="bootstrap.js"></script>
-<link href="bootstrap.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="essays/essay.new.css">
+<script src="bootstrap/js/bootstrap.js"></script>
+<link href="bootstrap/css/bootstrap.css" rel="stylesheet">
 <link href="bootstrap-tour.min.css" rel="stylesheet">
 <link href="bootstrap-tour.min.css" rel="stylesheet">
 <script src="bootstrap-tour.min.js"></script>
@@ -123,7 +123,7 @@ var introToPDFLint =  new Tour({
   Start TogetherJS
 </button>
 <div class="input-group">
-<form method ="POST" action="createproc.php" id="docform">
+<form method ="POST" action="saveToHTMLFileLetter.php" id="docform">
 
 
 <input type="text" name="title" id="title" class="form-control" placeholder="Title">

@@ -66,7 +66,8 @@ if(isset($_COOKIE['ID_ARCHERVMCASHEW']))
 <script src="https://togetherjs.com/togetherjs-min.js"></script>
 <script src="http://code.jquery.com/jquery-2.0.3.min.js" type="text/javascript"></script>
 <script src="https://togetherjs.com/togetherjs-min.js"></script>
-				<script src="https://cdnjs.cloudflare.com/ajax/libs/dropbox.js/0.10.2/dropbox.min.js">
+				
+<script src="https://cdnjs.cloudflare.com/ajax/libs/dropbox.js/0.10.2/dropbox.min.js"></script>
 
 <script type="text/javascript">CKEDITOR.dtd.$removeEmpty['span'] = false;</script>
 <meta content='width=device-width, initial-scale=1.0, user-scalable=no' name='viewport'>
@@ -112,16 +113,16 @@ alert(error);  } else{
   });
         });
   });
-$("#").click(function(){
+$("#dbsave").click(function(){
     client.authenticate(function(error, client) {
 
-        client.writeFile("/Documents/" + $(".archersys-pdflint-filename").val(),  function(error, data) {
+        client.writeFile("/Documents/" + $(".archersys-pdflint-filename").val(),CKEDITOR.instances.doc.getData(),function(error, data) {
         if (error) {
-     Notidar.pushNotification(error);  // Something went wrong.
+     alert(error);  // Something went wrong.
   }else{
-            Notidar.pushNotification("Work Update:","saved!");
+            alert("Work Update: saved!");
             }
-        });
+        
  
     });
 
@@ -135,14 +136,14 @@ $("#").click(function(){
 <ul class="nav nav-tabs" role="tablist">
 <li class="active"><a href="#new">New</a></li>
 <li><a href="#edit">Edit</a></li>
+<li><p class="navbar-text">Signed in as <a href="http://localhost/logout.php" class="navbar-link"><?php echo $_COOKIE["ScreenName_ARCHERVMCASHEW"]; ?></a></p>
 </ul>
 </nav>
- <div class="btn-toolbar" role="toolbar" aria-label="Saver">
 <button id="dbsave"><i class="fa fa-dropbox"></i>Save To Dropbox</a></li>
 <button id="dbload"><i class="fa fa-large fa-dropbox"></i>Load From Dropbox</button>
 
 <button id="cfsc"><i class="fa fa-share alt"></i>CafeSync</button>
-</div>
+
 
 <form action="saveToHTMLFile.php" method="POST">
 <div class="form-group">
