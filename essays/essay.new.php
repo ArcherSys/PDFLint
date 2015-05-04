@@ -43,7 +43,7 @@ content_css : "essaycontent.css",
 plugins: [
          "advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker",
          "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
-         "save table contextmenu directionality emoticons template paste textcolor "
+         "save table contextmenu directionality emoticons template paste textcolor autosave"
    ],
 toolbar1 : "newdocument bold italic underline strikethrough alignleft aligncenter alignright alignjustify styleselect" ,
 toolbar2 : "formatselect fontselect fontsizeselect cut copy paste bullist numlist outdent indent blockquote undo redo removeformat subscript superscript save",
@@ -76,12 +76,21 @@ var introToPDFLint =  new Tour({
            element: "#togetherjs-dock",
            title: "Collaboration",
            content: "Click on one of the buttons here to start collaboration",
-     }
-            
-       ]});
+         },
+{ 
+     element: "#dropbox-saver",
+     title: "Saving your Essays Online",
+     content: " Click this button to save your work to Dropbox."
+     },
+     {
+      element: "#dropbox-loader",
+      title: "Loading Essays from Dropbox",
+      content: "Load your Documents from Dropbox by clicking this button here!"
+}]});
        $(function(){
          introToPDFLint.init();
 	 introToPDFLint.start();
+
 	 $("#save").click(function(){
 		 $("#docform").submit();
 	 });
@@ -97,9 +106,15 @@ var introToPDFLint =  new Tour({
             }
        
     });
- 
+       $("#dropbox-loader").click(function(){
 
-   
+                      var client = new Dropbox.Client({ key: "brwekpcno93vtpz" });
+    client.authenticate(function(error, client) {
+            client.readFile("/Documents/" +  prompt("Filename:"),function(stat, data){
+              tinymce.activeEditor.setContent(data);
+});
+});
+   });
 	 });
 		 });
        });
@@ -116,13 +131,15 @@ var introToPDFLint =  new Tour({
 <li><a href="#edit">Edit</a></li>
 </ul>
 </nav>
-<div class="jumbotron">
+
+<button id="dropbox-saver">Save To Dropbox</button><button id="dropbox-loader">Load a file</button><button id="tourstart">Start PDFLint 4 Essay Editor Tour</button>
 <button id="start-togetherjs" type="button"
  onclick="TogetherJS(this); return false;"
  data-end-togetherjs-html="End TogetherJS">
   Start TogetherJS
 </button>
-<div class="input-group">
+
+
 <form method ="POST" action="createproc.php" id="docform">
 
 
@@ -131,14 +148,10 @@ var introToPDFLint =  new Tour({
 <input type="text" name="author" class="form-control" placeholder="Author">
 
 
-
-
-<textarea name="body"></textarea>
-<div class="btn-toolbar" role="toolbar" aria-label="Saver">
-<div class="btn-group btn-group-lg" role="group" aria-label="Saver">
-<button id="save">Save to ArcherVM</button><button id="dropbox-saver">Save To Dropbox</button></div></div>
+<textarea name="body"><?php echo file_get_contents($_GET["essay"]); ?></textarea>
+<button id="save">Save to ArcherVM</button>
 </form>
-</div>
+
 </div>
 </body>
 </html>

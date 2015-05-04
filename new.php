@@ -9,7 +9,8 @@
 
   require_once $_SERVER["DOCUMENT_ROOT"]."/config.php";
   require_once $_SERVER["DOCUMENT_ROOT"]."/includes/component-functions.php";
-
+require_once  $_SERVER["DOCUMENT_ROOT"]."\includes\FontAwesomeManager.php";
+use ArcherSys\Viewer\Styles\FontAwesomeManager;
  // Connects to your Database
 @ini_set("max_execution_time", 300);
  mysql_connect($config["dbhost"], $config["dbuser"], $config["dbpass"]) or die(mysql_error());
@@ -90,7 +91,8 @@ if(isset($_COOKIE['ID_ARCHERVMCASHEW']))
 <script src="bootstrap-tour.js"></script>
 <link rel="stylesheet" type="text/css" href="stylesheet.css">
 <link rel="stylesheet" type="text/css" href="landing-page.css">
-<script>
+
+<script language="Javascript">
 
 $(function(){
   var TogetherJSConfig_toolName="CafeSync";
@@ -113,6 +115,7 @@ alert(error);  } else{
   });
         });
   });
+
 $("#dbsave").click(function(){
     client.authenticate(function(error, client) {
 
@@ -136,14 +139,13 @@ $("#dbsave").click(function(){
 <ul class="nav nav-tabs" role="tablist">
 <li class="active"><a href="#new">New</a></li>
 <li><a href="#edit">Edit</a></li>
-<li><p class="navbar-text">Signed in as <a href="http://localhost/logout.php" class="navbar-link"><?php echo $_COOKIE["ScreenName_ARCHERVMCASHEW"]; ?></a></p>
+<li><p class="navbar-text"></a></p>
 </ul>
 </nav>
-<button id="dbsave"><i class="fa fa-dropbox"></i>Save To Dropbox</a></li>
-<button id="dbload"><i class="fa fa-large fa-dropbox"></i>Load From Dropbox</button>
+<button  id="dbsave"><?php FontAwesomeManager::addLogo("dropbox"); ?>Save To Dropbox</a></li>
+<button  id="dbload"><?php FontAwesomeManager::addLargeLogo("dropbox"); ?>Load From Dropbox</button>
 
-<button id="cfsc"><i class="fa fa-share alt"></i>CafeSync</button>
-
+<button class="btn" id="cfsc"><?php FontAwesomeManager::addAlternativeLogo("share"); ?>CafeSync</button>
 
 <form action="saveToHTMLFile.php" method="POST">
 <div class="form-group">
@@ -152,7 +154,7 @@ $("#dbsave").click(function(){
 
  <input type="text" class="archersys-pdflint-filename form-control" placeholder="filename" name="filename" ariadescribedby="sizing-addon3" />
 </div></div>
- <textarea name="document" class="ckeditor archersys-pdflint-editor" id="doc"></textarea>
+ <textarea name="document" class="ckeditor archersys-pdflint-editor" id="doc"><?php echo file_get_contents($_GET["document"]);?></textarea>
 </div>
 </form>
 </div>

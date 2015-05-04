@@ -8,7 +8,7 @@
 
 
 CKEDITOR.editorConfig = function( config ) {
-config.extraPlugins = 'a11yhelp,performx,confighelper,newpage,eqneditor,keyconf,floating-tools,fontawesome,ckeditor-gwf-plugin,docprops,wysiwygarea,devtools,widget,wordcount,autocorrect,mathjax,lineutils,tweetabletext,,coops-dmp,coops-connector,change,coops';
+config.extraPlugins = 'a11yhelp,performx,confighelper,quicktrans,newpage,eqneditor,keyconf,floating-tools,fontawesome,ckeditor-gwf-plugin,docprops,wysiwygarea,devtools,widget,wordcount,autocorrect,mathjax,lineutils,tweetabletext,coops-dmp,coops-connector,change,coops';
 config.scayt_autoStartup = true;
 config.filebrowserBrowseUrl =  '/browser/browse.php';
 config.filebrowserImageBrowseUrl = '/browser/browse.php?type=Images';
