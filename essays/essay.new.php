@@ -1,12 +1,21 @@
-<!DOCTYPE HTML>
-<html>
-<head>
-<title>New Essay</title>
-<meta content='width=device-width, initial-scale=1.0, user-scalable=no' name='viewport'>
+<?php
+require_once $_SERVER["DOCUMENT_ROOT"]."\includes\View.php";
+require_once $_SERVER["DOCUMENT_ROOT"]."\includes\jQueryManager.php";
+require_once $_SERVER["DOCUMENT_ROOT"]."\includes\CloudAdapter.php";
+require_once $_SERVER["DOCUMENT_ROOT"]."\includes\BootstrapComponents.php";
 
-<script src="jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/dropbox.js/0.10.2/dropbox.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+use ArcherSys\Bootstrap\Container;
+use ArcherSys\Viewer\Contrib\View;
+use ArcherSys\Viewer\jQueryManager;
+use ArcherSys\Devices\CloudAdapter;
+
+$essaycreator = new View("New Essay", function(){
+?>
+<meta content='width=device-width, initial-scale=1.0, user-scalable=no' name='viewport'>
+<?php 
+  jQueryManager::addjQuery();
+  CloudAdapter::importDropbox();
+?>
 <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/themes/smoothness/jquery-ui.css" />
 <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/jquery-ui.min.js"></script>
 <script src="tinymce/js/tinymce/tinymce.min.js"></script>
@@ -37,7 +46,7 @@ function PDFLintSave(element_id, html, body) {
         return html;
 }
  tinymce.init({
-selector:'textarea', 
+selector:"textarea", 
 save_callback: "PDFLintSave",
 content_css : "essaycontent.css",
 plugins: [
@@ -120,10 +129,14 @@ var introToPDFLint =  new Tour({
        });
 </script>
 
-
-</head>
+<?php 
+} ,function(){
+?>
 <body>
-<div class="container-fluid">
+<?php 
+ $container = new Container();
+ $container(true,function(){
+?>
 <h1 class="title-header">New Document</h1>
 <nav class="nav navbar-default navbar-fixed-top " role="navigation">
 <ul class="nav nav-tabs" role="tablist">
@@ -152,6 +165,7 @@ var introToPDFLint =  new Tour({
 <button id="save">Save to ArcherVM</button>
 </form>
 
-</div>
-</body>
-</html>
+<?php 
+ });
+});
+?>

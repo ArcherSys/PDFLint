@@ -8,7 +8,7 @@
 
 
 CKEDITOR.editorConfig = function( config ) {
-config.extraPlugins = 'a11yhelp,performx,confighelper,quicktrans,newpage,eqneditor,keyconf,floating-tools,fontawesome,ckeditor-gwf-plugin,docprops,wysiwygarea,devtools,widget,wordcount,autocorrect,mathjax,lineutils,tweetabletext,coops-dmp,coops-connector,change,coops';
+config.extraPlugins = 'a11yhelp,performx,uploadcare,confighelper,quicktrans,newpage,eqneditor,keyconf,floating-tools,fontawesome,ckeditor-gwf-plugin,docprops,wysiwygarea,devtools,widget,wordcount,autocorrect,mathjax,lineutils,tweetabletext,coops-dmp,coops-connector,change,coops,widgetbootstrap,widgettemplatemenu,widgetcommon,oembed,htmlbuttons';
 config.scayt_autoStartup = true;
 config.filebrowserBrowseUrl =  '/browser/browse.php';
 config.filebrowserImageBrowseUrl = '/browser/browse.php?type=Images';
@@ -22,5 +22,9 @@ config.toolbarCanCollapse = true;
 config.allowedContent = true;
 config.enterMode = CKEDITOR.ENTER_DIV;
 config.shiftEnterMode = CKEDITOR.ENTER_P;
+config.pasteFromWordRemoveFontStyles = false;
+config.indentOffset = 4;
+UPLOADCARE_PUBLIC_KEY = "f777f111dfbd73e7af9d"; // set public key for Uploadcare
+UPLOADCARE_LOCALE = 'en';
 
 };
