@@ -3,11 +3,12 @@ require_once $_SERVER["DOCUMENT_ROOT"]."\includes\View.php";
 require_once $_SERVER["DOCUMENT_ROOT"]."\includes\jQueryManager.php";
 require_once $_SERVER["DOCUMENT_ROOT"]."\includes\CloudAdapter.php";
 require_once $_SERVER["DOCUMENT_ROOT"]."\includes\BootstrapComponents.php";
-
+require_once $_SERVER["DOCUMENT_ROOT"]."\includes\TinyMCESupport.php";
 use ArcherSys\Bootstrap\Container;
 use ArcherSys\Viewer\Contrib\View;
 use ArcherSys\Viewer\jQueryManager;
 use ArcherSys\Devices\CloudAdapter;
+use ArcherSys\Documents\TinyMCESupport;
 
 $essaycreator = new View("New Essay", function(){
 ?>
@@ -18,8 +19,9 @@ $essaycreator = new View("New Essay", function(){
 ?>
 <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/themes/smoothness/jquery-ui.css" />
 <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/jquery-ui.min.js"></script>
-<script src="tinymce/js/tinymce/tinymce.min.js"></script>
-<script src="tinymce/js/tinymce/jquery.tinymce.min.js"></script>
+<?php 
+  TinyMCESupport::addContext();
+?>
 <link rel="stylesheet" type="text/css" href="essay.new.css">
 <script src="bootstrap.js"></script>
 <link href="bootstrap.css" rel="stylesheet">
@@ -132,7 +134,6 @@ var introToPDFLint =  new Tour({
 <?php 
 } ,function(){
 ?>
-<body>
 <?php 
  $container = new Container();
  $container(true,function(){

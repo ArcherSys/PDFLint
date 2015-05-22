@@ -10,6 +10,10 @@
   require_once $_SERVER["DOCUMENT_ROOT"]."/config.php";
   require_once $_SERVER["DOCUMENT_ROOT"]."/includes/component-functions.php";
 require_once  $_SERVER["DOCUMENT_ROOT"]."\includes\FontAwesomeManager.php";
+require_once $_SERVER["DOCUMENT_ROOT"]."\includes\View.php";
+require_once $_SERVER["DOCUMENT_ROOT"]."\includes\BootStrapComponents.php";
+use ArcherSys\Viewer\Contrib\View;
+use ArcherSys\Bootstrap\Container;
 use ArcherSys\Viewer\Styles\FontAwesomeManager;
  // Connects to your Database
 @ini_set("max_execution_time", 300);
@@ -56,13 +60,12 @@ if(isset($_COOKIE['ID_ARCHERVMCASHEW']))
  			{
 
 
+  $doccreator = new View("New Document",function(){
+  	
   
 ?>
 
-<!DOCTYPE HTML>
-<html>
-<head>
-<title>New Document</title>
+
 <script src="http://localhost/Producktiviti/PDFLint/ckeditor/ckeditor.js"></script>
 <script src="https://togetherjs.com/togetherjs-min.js"></script>
 <script src="http://code.jquery.com/jquery-2.0.3.min.js" type="text/javascript"></script>
@@ -133,9 +136,11 @@ $("#dbsave").click(function(){
 }); 
 });
 </script>
-</head>
-<body>
-<div class="container-fluid"><h3>New Document</h3><nav class="nav navbar-default navbar-fixed-top " role="navigation">
+<?php
+},function(){
+	?>
+	<div class="container-fluid">
+	<h3>New Document</h3><nav class="nav navbar-default navbar-fixed-top " role="navigation">
 <ul class="nav nav-tabs" role="tablist">
 <li class="active"><a href="#new">New</a></li>
 <li><a href="#edit">Edit</a></li>
@@ -158,12 +163,9 @@ $("#dbsave").click(function(){
 </div>
 </form>
 </div>
-</body>
-
-</html>
 
 <?php
-  
+ 			});
  			}
 
  		}
