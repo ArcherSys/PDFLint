@@ -2,9 +2,8 @@
 require_once $_SERVER["DOCUMENT_ROOT"]."\includes\View.php";
 require_once $_SERVER["DOCUMENT_ROOT"]."\includes\jQueryManager.php";
 require_once $_SERVER["DOCUMENT_ROOT"]."\includes\CloudAdapter.php";
-require_once $_SERVER["DOCUMENT_ROOT"]."\includes\BootstrapComponents.php";
+
 require_once $_SERVER["DOCUMENT_ROOT"]."\includes\TinyMCESupport.php";
-use ArcherSys\Bootstrap\Container;
 use ArcherSys\Viewer\Contrib\View;
 use ArcherSys\Viewer\jQueryManager;
 use ArcherSys\Devices\CloudAdapter;
@@ -13,13 +12,13 @@ use ArcherSys\Documents\TinyMCESupport;
 $essaycreator = new View("New Essay", function(){
 ?>
 <meta content='width=device-width, initial-scale=1.0, user-scalable=no' name='viewport'>
-<?php 
+<?php
   jQueryManager::addjQuery();
   CloudAdapter::importDropbox();
 ?>
 <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/themes/smoothness/jquery-ui.css" />
 <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/jquery-ui.min.js"></script>
-<?php 
+<?php
   TinyMCESupport::addContext();
 ?>
 <link rel="stylesheet" type="text/css" href="essay.new.css">
@@ -48,13 +47,15 @@ function PDFLintSave(element_id, html, body) {
         return html;
 }
  tinymce.init({
-selector:"textarea", 
+selector:"textarea",
 save_callback: "PDFLintSave",
 content_css : "essaycontent.css",
+gecko_spellcheck: true,
+autosave_ask_before_unload: true,
 plugins: [
          "advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker",
          "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
-         "save table contextmenu directionality emoticons template paste textcolor autosave"
+         "save table contextmenu directionality emoticons template paste textcolor autosave importcss"
    ],
 toolbar1 : "newdocument bold italic underline strikethrough alignleft aligncenter alignright alignjustify styleselect" ,
 toolbar2 : "formatselect fontselect fontsizeselect cut copy paste bullist numlist outdent indent blockquote undo redo removeformat subscript superscript save",
@@ -88,7 +89,7 @@ var introToPDFLint =  new Tour({
            title: "Collaboration",
            content: "Click on one of the buttons here to start collaboration",
          },
-{ 
+{
      element: "#dropbox-saver",
      title: "Saving your Essays Online",
      content: " Click this button to save your work to Dropbox."
@@ -131,13 +132,10 @@ var introToPDFLint =  new Tour({
        });
 </script>
 
-<?php 
+<?php
 } ,function(){
 ?>
-<?php 
- $container = new Container();
- $container(true,function(){
-?>
+<div class="container-fluid">
 <h1 class="title-header">New Document</h1>
 <nav class="nav navbar-default navbar-fixed-top " role="navigation">
 <ul class="nav nav-tabs" role="tablist">
@@ -165,8 +163,8 @@ var introToPDFLint =  new Tour({
 <textarea name="body"><?php echo file_get_contents($_GET["essay"]); ?></textarea>
 <button id="save">Save to ArcherVM</button>
 </form>
+</div>
+<?php
 
-<?php 
- });
 });
 ?>

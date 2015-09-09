@@ -40,6 +40,7 @@
       <li><a href="essays/essay.new.php" id="newessay">Essay</a></li>
       <li><a href="new.php">Document</a></li>
       <li><a href="photo-essay/">Photo Essay</a></li>
+      <li><a href="tej.new.php">Create Triple Entry Journal</a></li>
     </ul>
   </li>
 <li><a id="opengmail" href="https://gmail.com">Gmail</a></li>
